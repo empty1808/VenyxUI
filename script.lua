@@ -613,7 +613,7 @@ do
 		local close = function()
 		
 			if not active then
-				return
+				return functions
 			end
 			
 			active = false
@@ -640,7 +640,7 @@ do
 		notification.Accept.MouseButton1Click:Connect(function()
 		
 			if not active then 
-				return
+				return functions
 			end
 			
 			if callback then
@@ -653,7 +653,7 @@ do
 		notification.Decline.MouseButton1Click:Connect(function()
 		
 			if not active then 
-				return
+				return functions
 			end
 			
 			if callback then
