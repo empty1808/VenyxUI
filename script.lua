@@ -663,7 +663,8 @@ do
 			
 			close()
 		end)
-		print(close)
+		functions.close = close
+		print(funtions.close)
 		return
 	end
 	
