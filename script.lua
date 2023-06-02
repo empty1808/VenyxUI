@@ -614,7 +614,7 @@ do
 		
 			if not active then
 				print('return 1')
-				return functions
+				return
 			end
 			
 			active = false
@@ -654,7 +654,7 @@ do
 		
 			if not active then 
 				print('return 3')
-				return functions
+				return
 			end
 			
 			if callback then
@@ -663,7 +663,7 @@ do
 			
 			close()
 		end)
-		functions.close = close
+		funtions.close = close
 		print(funtions.close)
 		return
 	end
