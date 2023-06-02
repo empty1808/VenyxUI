@@ -613,7 +613,6 @@ do
 		local close = function()
 		
 			if not active then
-				print('return 1')
 				return
 			end
 			
@@ -639,7 +638,6 @@ do
 		notification.Accept.MouseButton1Click:Connect(function()
 		
 			if not active then 
-				print('return 2')
 				return
 			end
 			
@@ -653,7 +651,6 @@ do
 		notification.Decline.MouseButton1Click:Connect(function()
 		
 			if not active then 
-				print('return 3')
 				return
 			end
 			
@@ -664,7 +661,6 @@ do
 			close()
 		end)
 		functions.close = close
-		print(functions.close)
 		return functions 
 	end
 	
