@@ -613,6 +613,7 @@ do
 		local close = function()
 		
 			if not active then
+				print('return 1')
 				return functions
 			end
 			
@@ -632,15 +633,14 @@ do
 			wait(0.2)
 			notification:Destroy()
 		end
-
-		functions['close'] = close
 		
 		self.activeNotification = close
 		
 		notification.Accept.MouseButton1Click:Connect(function()
 		
 			if not active then 
-				return functions
+				print('return 2')
+				return
 			end
 			
 			if callback then
@@ -653,6 +653,7 @@ do
 		notification.Decline.MouseButton1Click:Connect(function()
 		
 			if not active then 
+				print('return 3')
 				return functions
 			end
 			
@@ -662,7 +663,7 @@ do
 			
 			close()
 		end)
-		return functions
+		return
 	end
 	
 	function section:addButton(title, callback)
