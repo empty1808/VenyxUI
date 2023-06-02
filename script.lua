@@ -501,7 +501,9 @@ do
 	-- new modules
 	
 	function library:Notify(title, text, callback)
-	
+		
+		local funtions {}
+
 		-- overwrite last notification
 		if self.activeNotification then
 			self.activeNotification = self.activeNotification()
@@ -630,6 +632,8 @@ do
 			wait(0.2)
 			notification:Destroy()
 		end
+
+		functions['close'] = close
 		
 		self.activeNotification = close
 		
@@ -658,6 +662,7 @@ do
 			
 			close()
 		end)
+		return functions
 	end
 	
 	function section:addButton(title, callback)
@@ -2167,7 +2172,4 @@ do
 		end
 	end
 end
-
-print("dino was here :\)")
 return library
-1
