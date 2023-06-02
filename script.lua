@@ -665,7 +665,7 @@ do
 		end)
 		funtions.close = close
 		print(funtions.close)
-		return
+		return funtions
 	end
 	
 	function section:addButton(title, callback)
