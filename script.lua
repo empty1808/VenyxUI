@@ -502,7 +502,7 @@ do
 	
 	function library:Notify(title, text, callback)
 		
-		local funtions {}
+		local funtions = {}
 
 		-- overwrite last notification
 		if self.activeNotification then
