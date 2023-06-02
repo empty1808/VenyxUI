@@ -502,7 +502,7 @@ do
 	
 	function library:Notify(title, text, callback)
 		
-		local funtions = {}
+		local functions = {}
 
 		-- overwrite last notification
 		if self.activeNotification then
@@ -663,9 +663,9 @@ do
 			
 			close()
 		end)
-		funtions.close = close
-		print(funtions.close)
-		return funtions
+		functions.close = close
+		print(functions.close)
+		return functions 
 	end
 	
 	function section:addButton(title, callback)
