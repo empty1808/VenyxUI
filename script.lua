@@ -663,6 +663,7 @@ do
 			
 			close()
 		end)
+		print(close)
 		return
 	end
 	
