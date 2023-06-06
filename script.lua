@@ -2110,7 +2110,7 @@ do
 	
 	function section:updateDropdown(dropdown, title, list, callback)
 		dropdown = self:getModule(dropdown)
-		
+		print('updateDropdown: '..tostring(list))
 		if title then
 			dropdown.Search.TextBox.Text = title
 		end
@@ -2167,7 +2167,7 @@ do
 		local frame = dropdown.List.Frame
 		
 		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 30) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
-		utility:Tween(dropdown.Search.Button, {Rotation = list and 0 or 0}, 0.3)
+		utility:Tween(dropdown.Search.Button, {Rotation = list and 180 or 0}, 0.3)
 		
 		if entries > 3 then
 		
