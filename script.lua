@@ -792,7 +792,7 @@ do
 		local uuid = toggle:GetAttribute('UUID')
 		Elements[uuid].Active = default;
 
-		self:updateToggle(toggle, nil, active)
+		self:updateToggle(toggle, nil, Elements[uuid].Active)
 		
 		toggle.MouseButton1Click:Connect(function()
 			Elements[uuid].Active = not Elements[uuid].Active
