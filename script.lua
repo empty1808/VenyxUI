@@ -1989,7 +1989,7 @@ do
 		}
 		
 		local frame = toggle.Button.Frame
-		Elements[uuid].Active = Elements[uuid].Active and "Out" or "In"
+		local pos = Elements[uuid].Active and "Out" or "In"
 		
 		if title then
 			toggle.Title.Text = title
@@ -1997,13 +1997,13 @@ do
 		
 		utility:Tween(frame, {
 			Size = UDim2.new(1, -22, 1, -9),
-			Position = position[Elements[uuid].Active] + UDim2.new(0, 0, 0, 2.5)
+			Position = position[pos] + UDim2.new(0, 0, 0, 2.5)
 		}, 0.2)
 		
 		wait(0.1)
 		utility:Tween(frame, {
 			Size = UDim2.new(1, -22, 1, -4),
-			Position = position[Elements[uuid].Active]
+			Position = position[pos]
 		}, 0.1)
 	end
 	
