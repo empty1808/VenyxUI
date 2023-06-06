@@ -7,6 +7,7 @@ local input = game:GetService("UserInputService")
 local run = game:GetService("RunService")
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
+local HttpService = game:GetService('HttpService');
 
 -- additional
 local utility = {}
@@ -22,10 +23,15 @@ local themes = {
 	TextColor = Color3.fromRGB(255, 255, 255)
 }
 
+--update system
+local ToggleActivated = {}
+
 do
 	function utility:Create(instance, properties, children)
 		local object = Instance.new(instance)
 		
+		object['uuid'] = HttpService:GenerateGUID(true);
+
 		for i, v in pairs(properties or {}) do
 			object[i] = v
 			
@@ -735,7 +741,7 @@ do
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
 			ScaleType = Enum.ScaleType.Slice,
-			SliceCenter = Rect.new(2, 2, 298, 298)
+			SliceCenter = Rect.new(2, 2, 298, 298),
 		},{
 			utility:Create("TextLabel", {
 				Name = "Title",
@@ -780,6 +786,9 @@ do
 		table.insert(self.modules, toggle)
 		--self:Resize()
 		
+		if (toggle['uuid']) then
+			print(toggle['uuid'])
+		end
 		local active = default
 		self:updateToggle(toggle, nil, active)
 		
