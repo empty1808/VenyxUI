@@ -24,7 +24,7 @@ local themes = {
 }
 
 --update system
-local Elements = {}
+local Elements = {};
 
 do
 	function utility:Create(instance, properties, children)
