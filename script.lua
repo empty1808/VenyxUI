@@ -24,13 +24,16 @@ local themes = {
 }
 
 --update system
-local ToggleActivated = {}
+local Elements = {}
 
 do
 	function utility:Create(instance, properties, children)
 		local object = Instance.new(instance)
 		
-		object:SetAttribute('UUID', HttpService:GenerateGUID(true));
+		local uuid = HttpService:GenerateGUID(true);
+		object:SetAttribute('UUID', uuid);
+		
+		Elements[uuid] = {};
 
 		for i, v in pairs(properties or {}) do
 			object[i] = v
@@ -786,16 +789,17 @@ do
 		table.insert(self.modules, toggle)
 		--self:Resize()
 		
-		print(toggle:GetAttribute('UUID'));
-		local active = default
+		local uuid = toggle:GetAttribute('UUID')
+		Elements[uuid].Active = default;
+
 		self:updateToggle(toggle, nil, active)
 		
 		toggle.MouseButton1Click:Connect(function()
-			active = not active
-			self:updateToggle(toggle, nil, active)
+			Elements[uuid].Active = not Elements[uuid].Active
+			self:updateToggle(toggle, nil, Elements[uuid].Active)
 			
 			if callback then
-				callback(active, function(...)
+				callback(Elements[uuid].Active, function(...)
 					self:updateToggle(toggle, ...)
 				end)
 			end
@@ -1976,13 +1980,16 @@ do
 	function section:updateToggle(toggle, title, value)
 		toggle = self:getModule(toggle)
 		
+		local uuid = toggle:GetAttribute('UUID');
+		Elements[uuid].Active = value;
+
 		local position = {
 			In = UDim2.new(0, 2, 0.5, -6),
 			Out = UDim2.new(0, 20, 0.5, -6)
 		}
 		
 		local frame = toggle.Button.Frame
-		value = value and "Out" or "In"
+		Elements[uuid].Active = Elements[uuid].Active and "Out" or "In"
 		
 		if title then
 			toggle.Title.Text = title
@@ -1990,13 +1997,13 @@ do
 		
 		utility:Tween(frame, {
 			Size = UDim2.new(1, -22, 1, -9),
-			Position = position[value] + UDim2.new(0, 0, 0, 2.5)
+			Position = position[Elements[uuid].Active] + UDim2.new(0, 0, 0, 2.5)
 		}, 0.2)
 		
 		wait(0.1)
 		utility:Tween(frame, {
 			Size = UDim2.new(1, -22, 1, -4),
-			Position = position[value]
+			Position = position[Elements[uuid].Active]
 		}, 0.1)
 	end
 	
