@@ -30,7 +30,7 @@ do
 	function utility:Create(instance, properties, children)
 		local object = Instance.new(instance)
 		
-		object['uuid'] = HttpService:GenerateGUID(true);
+		object:SetAttribute('UUID', HttpService:GenerateGUID(true));
 
 		for i, v in pairs(properties or {}) do
 			object[i] = v
@@ -786,9 +786,7 @@ do
 		table.insert(self.modules, toggle)
 		--self:Resize()
 		
-		if (toggle['uuid']) then
-			print(toggle['uuid'])
-		end
+		print(toggle:GetAttribute('UUID'));
 		local active = default
 		self:updateToggle(toggle, nil, active)
 		
